@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { msg_title_sign, msg_phone_sign, msg_name_sign, msg_button_sign, msg_list_name, msg_list_phone } from "../utils/messages";
 import { Alert, TextInput, Text, View, Button, TouchableOpacity, StyleSheet, ScrollView } from "react-native";
+import { Dimensions } from 'react-native';
 
 export default function App(){
     const [nome, setNome] = useState(""); //setNome é a função que altera o valor nome
@@ -51,14 +52,14 @@ export default function App(){
                         <TextInput value={telefone} onChangeText={ReceberTextoTelefone} style={styles.caixaTextoContainer}/>
                     </View>
 
-                <View style={{marginTop: "30"}}> {/*container do botao*/}
-                    <Button style = {styles.botaoContainer}
-                            title={msg_button_sign}
-                            onPress={ArmazenarTextoDigitado}>
-                    </Button>
+                <View style={styles.linhaInput}> {/*container do botao*/}
+                        <Text style={styles.label}></Text> {/* vazio só pra alinhar com os outros */}
+                        <TouchableOpacity style={styles.botaoContainer} onPress={ArmazenarTextoDigitado}>
+                            <Text style={styles.textoBotao}>{msg_button_sign}</Text>
+                         </TouchableOpacity>
                 </View>
 
-            <View style={styles.divisor}> {/*container das view listas */}
+            <View style={styles.divisor}> {/*container da linha divisoria */}
 
             </View> {/*view do cadastro*/}
 
@@ -71,7 +72,7 @@ export default function App(){
                         <Text style={styles.tituloColuna}>{msg_list_phone}</Text>
                     </View>
 
-                    <ScrollView style={{}}>
+                    <ScrollView>
                         {Lista.map((item, index) => (
                             <View key={index} style={styles.itemLista}>
                                 <Text style={styles.valorColuna}>{item.nome}</Text>
@@ -99,11 +100,13 @@ export default function App(){
         },
 
         cadastroContainer:{
-            width: '90%',
+            flex: 1,
+            width: '100%',
+            //paddingHorizontal: 10
         },
 
         titulo: {
-            fontSize: 16,
+            fontSize: 17,
             marginBottom: 5,
             fontWeight:'bold',
         },
@@ -129,8 +132,20 @@ export default function App(){
         },
 
         botaoContainer: {
-
+            flex: 1,
+            borderWidth: 1,
+            borderColor: '#b0c4de',
+            backgroundColor: '#e6e6fa',
+            padding: 6,
         },
+
+        textoBotao: {
+            color: 'black',
+            fontWeight: 'bold',
+            textAlign: 'center',
+            fontSize: 16,
+          },
+
 
         divisor: {
             width: "100%",
@@ -141,19 +156,21 @@ export default function App(){
         },
 
         listaContainer: {
+            maxHeight: '100%', // ou um valor fixo como 300
+            flex: 1
         },
         
 
         cabecalhoLista:{
             flexDirection: "row",
             paddingVertical: 5,
-            borderBottomColor: "#ccc"
         },
 
         tituloColuna:{
             flex: 1,
             fontWeight: "bold",
             textAlign: "center",
+            fontSize: 15,
         },
 
         itemLista: {
@@ -166,5 +183,5 @@ export default function App(){
             textAlign: 'center',
         },
 
-        
+
 });
