@@ -25,7 +25,7 @@ Você pode abrir o app em:
 ---
 
 - O código principal está no arquivo:  
-  📄 `App.js` → contém a lógica do cadastro, armazenamento em memória e exibição da lista de contatos.
+  📄 `app/index.js` → contém a lógica do cadastro, armazenamento em memória e exibição da lista de contatos.
 
 - Os textos da interface (rótulos, botões, títulos) estão organizados separadamente em:  
   📄 `utils/messages.js`
@@ -46,7 +46,8 @@ Você pode abrir o app em:
 
 ```bash
 .
-├── App.js              # Código principal do app
+├── app              
+│   └── index.js        # Código principal do app 
 ├── utils
 │   └── messages.js     # Arquivo com os textos/rótulos usados na interface
 ├── package.json
